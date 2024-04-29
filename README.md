@@ -51,7 +51,7 @@ Note that both training and validation losses converge, suggestign that the mode
 
 Analyzing the ROC curve, we may conclude our model classifies makes mainly random guesses and has no great predictive power.
 
-## Testing Possible Training Strategy
+## Testing Model and Possible Training Strategy
 Now, we can implement a trading strategy that utilizes a trained model to make buy decisions based on the price and volume ratios and sell when the following trend cluster has ended. We iterate over a subset of days, calculate normalized features, feed them into the model, and make trading decisions accordingly. We can track the profitability of these decisions over time and visualize the cumulative returns compared to the initial investment. 
 ![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/7886a074-d957-418f-91bd-bf4ed9b014e6)
 
