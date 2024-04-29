@@ -18,13 +18,13 @@ The objective of this project is to leverage a Recurrent Neural Network for the 
 * Matplotlib
 
 ## Original Data and Data Processing
-Data was collected using [polygon.io](https://polygon.io/), yielding 1-minute timespan **META** stock data, that includes Datetime, Open, High, Low, Close, Volume, as well as Volume weighted Average Price (VW)	and Number of Rransactions (N) for each minute. 
-![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/17bd5a4e-c060-4777-9f9a-e1d147b3b51d)
+Data was collected using [polygon.io](https://polygon.io/), yielding 1-minute timespan **AAPL** stock data, that includes Datetime, Open, High, Low, Close, Volume, as well as Volume weighted Average Price (VW)	and Number of Rransactions (N) for each minute. 
+![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/3ea53114-e7ce-48e5-88ba-2bdbc1edb617)
 
-Original data was processed by extracting dates, filtering out incomplete days, grouping the data by day, creating a list of DataFrames, each representing a complete day of data. As a result we were able to get 440 complete days from _2022-06-09 09:30:00_ to _2024-03-15 15:59:00_. 
+Original data was processed by extracting dates, filtering out incomplete days, grouping the data by day, creating a list of DataFrames, each representing a complete day of data. As a result we were able to get 532 complete days from _2022-01-03 09:30:00_ to _2024-02-21 15:59:00_. 
 
 ##  Training and Testing Data
-The first 400 days will be used for model training and validation sets while the last 40 days for trading performance analysis using the trained model. 
+The first 400 days will be used for model training and validation sets while the last 132 days for model performance analysis using the trained model. 
 In ordet to generate training and testing dataset we will iterates over a subset of daily data frames, extracting price and volume information. A sliding window approach was used to generate features and labels (X and Y), where each feature consists of ratios of consecutive prices and volumes. Following each window, we cluster prices, fiting linear regressions, and detecting outliers until a threshold is reached or the day ends. When a coefficient of the following cluster is obtained, we assign a label (y) based on the slope of the linear fit, where a positive slope corresponds to 1 and a negative slope corresponds to 0.  At the end, we assemble the features and labels into numpy arrays for further processing.
 
 Note on Trend Clustering Process: The code initializes an empty list l_cluster to store prices within a cluster, It starts iterating from the end of the sliding window, adding prices to the l_cluster until either an outlier is detected or the end of the day is reached. This process aims to capture a sequence of consecutive prices that might exhibit a trend, which could be either increasing or decreasing.
@@ -33,7 +33,7 @@ The threshold parameter is utilized to determine whether a data point is conside
 
 Note that using ratios of prices and volumes instead of the absolute values themselves helps to mitigate the effects of scale and variability in the data which is very common to stock data. Ratios provide a normalized representation that is less sensitive to absolute magnitudes, making the model more robust and better able to capture underlying trends and patterns. Additionally, ratios can highlight relative changes and trends in the data, which may be more informative for predicting stock price movements. 
 
-The dataset comprises 29,600 data points, with the initial 90% allocated for training and the remaining 10% reserved for validation. This partitioning yields a balanced training set consisting of 13,279 negative and 13,361 positive points. Given the equilibrium in class distribution, there is no necessity for weighted sampling techniques and was just standardized to have a mean of 0 and standard deviation of 1. 
+The dataset comprises 29,600 data points, with the initial 90% allocated for training and the remaining 10% reserved for validation. This partitioning yields a balanced training set consisting of 13,438 negative and 13, 202 positive points. Given the equilibrium in class distribution, there is no necessity for weighted sampling techniques and was just standardized to have a mean of 0 and standard deviation of 1. 
 
 ## Model and Training
 This model used is a recurrent neural network (RNN) implemented in PyTorch. It consists of an input layer, followed by two linear layers (i2h and i2o) for feature transformation, and two additional linear layers (layer1 and layer2) with ReLU activation functions for further processing. The final output is obtained by applying a sigmoid activation function for the sake of binary classification. The model's weights are initialized using Xavier uniform initialization and biases using constant value of 0.01.
@@ -42,20 +42,22 @@ This model used is a recurrent neural network (RNN) implemented in PyTorch. It c
 The model was trained using Binary Cross Entropy Loss and ADAM optimizer with batch size of 500 and 10 epochs and learning rate of 0.001. The loss is computed based on the entire sequence of outputs generated by the RNN for each input sequence, rather than just the final output. This approach is common in sequence prediction tasks and ensures that the model learns to make accurate predictions across all time steps of the input sequence.
 
 ## Training Results 
-![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/8c61052f-3b24-4a38-ac47-a783327cf8e6)
+![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/dbd89a4e-1707-4519-aee4-5535843305f5)
+
 Note that both training and validation losses converge, suggestign that the model is learning the patterns present in the training data effectively and is also able to generalize well to new, unseen data.
 
-![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/337e4f1f-4a6e-49c9-b38e-1f2a80cac2ed)
+![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/c1b28d66-f4f2-43de-83a6-55ff7b79dfc5)
+
 
 Analyzing the ROC curve, we may conclude our model classifies makes mainly random guesses and has no great predictive power.
 
 ## Testing Possible Training Strategy
-Now, we can implement a trading strategy that utilizes a trained model to make buy or sell decisions based on the price and volume ratios. We iterate over a subset of days, calculate normalized features, feed them into the model, and make trading decisions accordingly. We then track the profitability of these decisions over time and visualize the cumulative returns compared to the initial investment. In addition, we would implement the 1% stop loss for each trade. 
-![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/038a7dd1-f94e-4726-a6f3-4d19ba5579e9)
+Now, we can implement a trading strategy that utilizes a trained model to make buy decisions based on the price and volume ratios and sell when the following trend cluster has ended. We iterate over a subset of days, calculate normalized features, feed them into the model, and make trading decisions accordingly. We can track the profitability of these decisions over time and visualize the cumulative returns compared to the initial investment. 
+![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/7886a074-d957-418f-91bd-bf4ed9b014e6)
 
+As we can see, the model performance is positive with 51% of correctly predicted positive trends, making a total of 1485 transactions and creating a profit of 23$, which is not bad, realtive to the stock performance of $4. As an example, we can also visualize how the model trades during one of the days: 
+![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/d0082e9d-82d2-44f6-89f7-8a5a2cb85006)
 
-As we can see, the model performance is positive with 51% of correctly predicted positive trends, making a total of 557 transactions and creating a profit of - 3$ . As an example, we can also visualize how the model trades during one of the days: 
-![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/883328f0-3304-4120-ac14-4d2061fb6c9e)
 
 ## Conclusion 
 In summary, this project utilized RNNs to detect positive trends in intraday stock data. While the model demonstrated some predictive capability, its overall performance was modest. However, it was able achieved a 51% precission rate.
