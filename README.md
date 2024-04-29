@@ -17,9 +17,13 @@ The objective of this project is to leverage a Recurrent Neural Network for the 
 * Matplotlib
 
 ## Original Data and Data Processing
-Data was collected using [polygon.io](https://polygon.io/), yielding 1-minute timespan **META** stock data, that includes Datetime, Open, High, Low, Close, Volume, as well as Volume weighted Average Price(VW)	and number of transactions N for each minute. 
+Data was collected using [polygon.io](https://polygon.io/), yielding 1-minute timespan **META** stock data, that includes Datetime, Open, High, Low, Close, Volume, as well as Volume weighted Average Price (VW)	and Number of Rransactions (N) for each minute. 
 ![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/17bd5a4e-c060-4777-9f9a-e1d147b3b51d)
 
-Original data was processed by extracting dates, filtering out incomplete days, grouping the data by day, creating a list of DataFrames, each representing a complete day of data. As a result we were able to get 440 complete days from _2022-06-09 09:30:00_ to _2024-03-15 15:59:00_.
+Original data was processed by extracting dates, filtering out incomplete days, grouping the data by day, creating a list of DataFrames, each representing a complete day of data. As a result we were able to get 440 complete days from _2022-06-09 09:30:00_ to _2024-03-15 15:59:00_. 
+
+##  Training and Testing Data
+
+
 
 
