@@ -51,13 +51,14 @@ Analyzing the ROC curve, we may conclude our model classifies makes mainly rando
 
 ## Testing Possible Training Strategy
 Now, we can implement a trading strategy that utilizes a trained model to make buy or sell decisions based on the price and volume ratios. We iterate over a subset of days, calculate normalized features, feed them into the model, and make trading decisions accordingly. We then track the profitability of these decisions over time and visualize the cumulative returns compared to the initial investment. In addition, we would implement the 1% stop loss for each trade. 
-![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/798b6da6-f928-4ed1-b2c4-862614f6d413)
+![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/038a7dd1-f94e-4726-a6f3-4d19ba5579e9)
 
-As we can see, the model performance is positive with 51% of correctly predicted positive trends, making a total of 557 transactions and creating a profit of 4$. As an example, we can also visualize how the model trades during one of the days: 
+
+As we can see, the model performance is positive with 51% of correctly predicted positive trends, making a total of 557 transactions and creating a profit of - 3$ . As an example, we can also visualize how the model trades during one of the days: 
 ![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/883328f0-3304-4120-ac14-4d2061fb6c9e)
 
 ## Conclusion 
-In summary, this project utilized RNNs to detect positive trends in intraday stock data. While the model demonstrated some predictive capability, its overall performance was modest. However, when applied to a trading strategy, it achieved a 51% accuracy rate, resulting in a profitable outcome.
+In summary, this project utilized RNNs to detect positive trends in intraday stock data. While the model demonstrated some predictive capability, its overall performance was modest. However, it was able achieved a 51% precission rate.
 
 Possible improvements for future work include enhancing the model architecture for better predictive power, exploring alternative data sources or features, and refining the trading strategy to optimize profitability further. Additionally, incorporating more sophisticated techniques such as ensemble learning or reinforcement learning could offer avenues for improvement in stock trend classification and trading strategies.
 
