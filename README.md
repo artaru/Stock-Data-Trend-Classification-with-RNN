@@ -29,7 +29,7 @@ In ordet to generate training and testing dataset we will iterates over a subset
 
 Note on Trend Clustering Process: The code initializes an empty list l_cluster to store prices within a cluster, It starts iterating from the end of the sliding window, adding prices to the l_cluster until either an outlier is detected or the end of the day is reached. This process aims to capture a sequence of consecutive prices that might exhibit a trend, which could be either increasing or decreasing.
 The threshold parameter is utilized to determine whether a data point is considered an outlier. Once a cluster is formed, a linear regression model is fitted to it. The residual values are calculated, if any residual value exceeds a certain threshold, it indicates a significant deviation from the linear trend, suggesting the presence of an outlier.
-![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/9e4e918b-62f6-46d0-852f-3d7de5580f8a)
+![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/43ec80f7-f1d7-4bf5-af99-1a7f7e833834)
 
 Note that using ratios of prices and volumes instead of the absolute values themselves helps to mitigate the effects of scale and variability in the data which is very common to stock data. Ratios provide a normalized representation that is less sensitive to absolute magnitudes, making the model more robust and better able to capture underlying trends and patterns. Additionally, ratios can highlight relative changes and trends in the data, which may be more informative for predicting stock price movements. 
 
