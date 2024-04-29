@@ -1,6 +1,6 @@
 # Stock Data Trend Classification with RNN
 <p align="center">
-  <img src="https://github.com/artaru/Stock-Data-Classification-with-RNN/blob/main/CreateCircle-ezgif.com-video-to-gif-converter.gif" alt="animated" />
+  <img src="https://github.com/artaru/Stock-Data-Classification-with-RNN/blob/main/RNN.gif" alt="animated" />
 </p>
 
 ## Project Objective
