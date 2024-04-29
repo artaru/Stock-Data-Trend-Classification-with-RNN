@@ -15,3 +15,8 @@ The objective of this project is to leverage a Recurrent Neural Network for the 
 * PyTorch
 * Scikit-learn
 * Matplotlib
+
+## Original Data
+Data was collected using [polygon.io](https://polygon.io/), and it consists of 1-minute timespan data, that includes Datetime, Open, High, Low, Close, Volume, as well as Volume weighted Average Price(VW)	and number of transactions N.
+![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/17bd5a4e-c060-4777-9f9a-e1d147b3b51d)
+
