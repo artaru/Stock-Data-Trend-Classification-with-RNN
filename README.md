@@ -30,6 +30,11 @@ Note on Trend Clustering Process: The code initializes an empty list l_cluster t
 The threshold parameter is utilized to determine whether a data point is considered an outlier. Once a cluster is formed, a linear regression model is fitted to it. The residual values are calculated, if any residual value exceeds a certain threshold, it indicates a significant deviation from the linear trend, suggesting the presence of an outlier.
 ![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/9e4e918b-62f6-46d0-852f-3d7de5580f8a)
 
+The generated dataset consists of 29 600 datapoints, of which the first 90% will be used for training and last 10% for validation, resulting in a training dataset of 13279 negative and 13361 positive points. 
+
+
+
+
 
 
 
