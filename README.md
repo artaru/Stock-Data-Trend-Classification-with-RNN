@@ -30,7 +30,16 @@ Note on Trend Clustering Process: The code initializes an empty list l_cluster t
 The threshold parameter is utilized to determine whether a data point is considered an outlier. Once a cluster is formed, a linear regression model is fitted to it. The residual values are calculated, if any residual value exceeds a certain threshold, it indicates a significant deviation from the linear trend, suggesting the presence of an outlier.
 ![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/9e4e918b-62f6-46d0-852f-3d7de5580f8a)
 
-The generated dataset consists of 29 600 datapoints, of which the first 90% will be used for training and last 10% for validation, resulting in a training dataset of 13279 negative and 13361 positive points. 
+The dataset comprises 29,600 data points, with the initial 90% allocated for training and the remaining 10% reserved for validation. This partitioning yields a balanced training set consisting of 13,279 negative and 13,361 positive points. Given the equilibrium in class distribution, there is no necessity for weighted sampling techniques and was just standardized to have a mean of 0 and standard deviation of 1. 
+
+## Model 
+This model used is a recurrent neural network (RNN) implemented in PyTorch. It consists of an input layer, followed by two linear layers (i2h and i2o) for feature transformation, and two additional linear layers (layer1 and layer2) with ReLU activation functions for further processing. The final output is obtained by applying a sigmoid activation function for the sake of binary classification. The model's weights are initialized using Xavier uniform initialization and biases using constant value of 0.01.
+![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/c93ad4b6-272e-4b83-ba13-90db5185ad46)
+
+
+
+
+
 
 
 
