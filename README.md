@@ -32,6 +32,8 @@ Note on Trend Clustering Process: The code initializes an empty list l_cluster t
 The threshold parameter is utilized to determine whether a data point is considered an outlier. Once a cluster is formed, a linear regression model is fitted to it. The residual values are calculated, if any residual value exceeds a certain threshold, it indicates a significant deviation from the linear trend, suggesting the presence of an outlier.
 ![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/9e4e918b-62f6-46d0-852f-3d7de5580f8a)
 
+Note that using ratios of prices and volumes instead of the absolute values themselves helps to mitigate the effects of scale and variability in the data which is very common to stock data. Ratios provide a normalized representation that is less sensitive to absolute magnitudes, making the model more robust and better able to capture underlying trends and patterns. Additionally, ratios can highlight relative changes and trends in the data, which may be more informative for predicting stock price movements. 
+
 The dataset comprises 29,600 data points, with the initial 90% allocated for training and the remaining 10% reserved for validation. This partitioning yields a balanced training set consisting of 13,279 negative and 13,361 positive points. Given the equilibrium in class distribution, there is no necessity for weighted sampling techniques and was just standardized to have a mean of 0 and standard deviation of 1. 
 
 ## Model and Training
@@ -54,6 +56,12 @@ Now, we can implement a trading strategy that utilizes a trained model to make b
 
 As we can see, the model performance is positive with 51% of correctly predicted positive trends, making a total of 557 transactions and creating a profit of 4$. As an example, we can also visualize how the model trades during one of the days: 
 ![image](https://github.com/artaru/Stock-Data-Classification-with-RNN/assets/79018762/883328f0-3304-4120-ac14-4d2061fb6c9e)
+
+## Conclusion 
+In summary, this project utilized RNNs to detect positive trends in intraday stock data. While the model demonstrated some predictive capability, its overall performance was modest. However, when applied to a trading strategy, it achieved a 51% accuracy rate, resulting in a profitable outcome.
+
+Possible improvements for future work include enhancing the model architecture for better predictive power, exploring alternative data sources or features, and refining the trading strategy to optimize profitability further. Additionally, incorporating more sophisticated techniques such as ensemble learning or reinforcement learning could offer avenues for improvement in stock trend classification and trading strategies.
+
 
 
 
