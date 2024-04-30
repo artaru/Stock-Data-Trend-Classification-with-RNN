@@ -60,7 +60,7 @@ As we can see, the model performance is positive with 51% of correctly predicted
 
 
 ## Conclusion 
-In summary, this project utilized RNNs to detect positive trends in intraday stock data. While the model demonstrated some predictive capability, its overall performance was modest. However, it was able to achieve a 51% precission rate.
+In summary, this project utilized RNNs to detect positive trends in intraday stock data. While the model demonstrated some predictive capability, its overall performance was modest. However, it was able to achieve a 51% precision rate.
 
 Possible improvements for future work include enhancing the model architecture for better predictive power, exploring alternative data sources or features, and refining the trading strategy to optimize profitability further. Additionally, incorporating more sophisticated techniques such as ensemble learning or reinforcement learning could improve stock trend classification and trading strategies.
 
