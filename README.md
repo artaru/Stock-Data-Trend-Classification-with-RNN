@@ -55,7 +55,7 @@ Analyzing the ROC curve, we may conclude our model classifies makes mainly rando
 Now, we can implement a trading strategy that utilizes a trained model to make buy decisions based on the price and volume ratios and sell when the following trend cluster has ended. We iterate over a subset of days, calculate normalized features, feed them into the model, and make trading decisions accordingly. We can track the profitability of these decisions over time and visualize the cumulative returns compared to the initial investment. 
 ![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/7886a074-d957-418f-91bd-bf4ed9b014e6)
 
-As we can see, the model performance is positive with 51% of correctly predicted positive trends, making a total of 1485 transactions and creating a profit of 23$, which is not bad, realtive to the stock performance of $4. As an example, we can also visualize how the model trades during one of the days: 
+As we can see, the model performance is positive with 51% of correctly predicted positive trends, making a total of 1485 transactions and creating a profit of 23$, which is not bad, realtive to the stock performance of only $4. As an example, we can also visualize how the model trades during one of the days: 
 ![image](https://github.com/artaru/Stock-Data-Trend-Classification-with-RNN/assets/79018762/d0082e9d-82d2-44f6-89f7-8a5a2cb85006)
 
 
