@@ -1,10 +1,10 @@
-# Stock Data Trend Classification with RNN
+# Stock Data Trend Prediction with RNN
 <p align="center">
   <img src="https://github.com/artaru/Stock-Data-Classification-with-RNN/blob/main/RNN.gif" alt="animated" />
 </p>
 
 ## Project Objective
-The objective of this project is to leverage a Recurrent Neural Network for the detection of positive trends within intraday stock data. The model's input is characterized by a 20-minute range, while the subsequent trend is identified through a simple linear regression. 
+The objective of this project is to leverage a Recurrent Neural Network for the prediction of positive trends within intraday stock data. The model's input is characterized by a 20-minute range, while the subsequent trend is identified through a simple linear regression. 
 
 ### Methods Used
 * Machine Learning
